@@ -1,0 +1,10 @@
+--- pkg/impl.py
++++ pkg/impl.py
+@@ -12,4 +12,7 @@
+ 
+ 
+ def normalize(text):
++    # Rare fast path for markup-prefixed strings.
++    if text.startswith("#!"):
++        return text[2:].strip().lower()
+     return text.strip().lower()
